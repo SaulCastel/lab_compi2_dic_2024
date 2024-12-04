@@ -9,7 +9,7 @@ Desarrollar un sitio web para la verificación de PEGs ([Parsing Expression Gram
 ## Descripción
 ### Sitio web
 Desarrollar un sitio web estático, donde por medio de una entrada de texto, pueda ingresar una PEG. Luego, el sitio web indicará si la sintaxis es correcta, o en caso contrario, los errores que encuentre al momento de analizar la entrada.
-- Puede utilizar cualquier librería o framework frontend para generar la página web, o utlizar HTML/css/javascript
+- Puede utilizar cualquier librería o framework frontend para generar la página web, o utlizar HTML/CSS/Javascript
 
 #### Ejemplo de sitio web
 ![imagen pagina web](./ejemplo_sitio.png)
@@ -68,7 +68,7 @@ Cadena reconocia por regla1: foo
 
 Reconoce una subexpresión
 ```
-Ejemplo: ( "foo" )
+Ejemplo: grupo = ( "foo" )
 Cadena reconocida: foo
 ```
 
@@ -108,7 +108,7 @@ Cadena reconocida: foobarbaz
 
 Trata de reconocer la primera expresión, si no es posible, continua con la segunda, etc.
 ```
-Ejemplo: opciones: "foo" / "bar" / "baz"
+Ejemplo: opciones = "foo" / "bar" / "baz"
 Cadena(s) reconocidas: foo, bar, baz
 ```
 
@@ -135,10 +135,11 @@ integer
 
 Esta gramática es capaz de reconocer entradas de la forma:
 ```
-1 + 1
-1 * 2
-1 + ( 2 * 3)
+1+1
+1*2
+1+(2*3)
 ```
+
 ### Selección de mejores proyectos
 En la calificación de cada fase, los dos mejores proyectos serán seleccionados para ser agregados al repositorio de la escuela de ciencias y sistemas. Para la siguiente fase, todos los grupos deberán tomar como base uno de los proyectos ganadores de la fase anterior, y hacer un fork para desarrollar la siguiente fase. Esto se repetirá para cada fase, hasta completar el proyecto.
 
