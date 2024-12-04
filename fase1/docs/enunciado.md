@@ -31,7 +31,7 @@ Cada regla tiene la siguiente estructura:
 
 #### Expresiones reconocidas
 
-"literal"
+"literal" \
 'literal'
 
 Una cadena de texto que será tomada literalmente.
@@ -43,7 +43,6 @@ Cadena reconocida: foo
 Ejemplo: literal = 'foo'
 Cadena reconocida: foo
 ```
-\\
 
 [caracteres]
 
@@ -56,7 +55,6 @@ Cadena(s) reconocidas: a, b, c
 Ejemplo: conjunto = [abc]
 Cadena(s) reconocidas: a, b, c
 ```
-\\
 
 regla
 
@@ -65,7 +63,6 @@ Se refiere al nombre de otra regla en la gramática
 Ejemplo: regla_1 = regla_2; regla_2 = "foo"
 Cadena reconocia por regla1: foo
 ```
-\\
 
 ( *expresión* )
 
@@ -74,7 +71,6 @@ Reconoce una subexpresión
 Ejemplo: ( "foo" )
 Cadena reconocida: foo
 ```
-\\
 
 *expresión* \*
 
@@ -83,7 +79,6 @@ Reconoce cero o más instancias de la expresión
 Ejemplo: cero_o_mas = "foo" *
 Cadena(s) reconocidas: *nada*, foo, foofoo, foofoofoo, etc.
 ```
-\\
 
 *expresión* \+
 
@@ -92,7 +87,6 @@ Reconoce una o más instancias de la expresión
 Ejemplo: una_o_mas = "foo" +
 Cadena(s) reconocidas: foo, foofoo, foofoofoo, etc.
 ```
-\\
 
 *expresión* ?
 
@@ -101,7 +95,6 @@ Reconoce cero o una instancia de la expresión
 Ejemplo: regla = "foo" ?
 Cadena(s) reconocidas: *nada*, foo
 ```
-\\
 
 *expresión_1* *expresión_2* ... *expresión_n*
 
@@ -110,7 +103,6 @@ Reconoce una serie/concatenación de expresiones
 Ejemplo: concatenacion = "foo" "bar" "baz"
 Cadena reconocida: foobarbaz
 ```
-\\
 
 *expresión_1* / *expresión_2* / ... / *expresión_n*
 
@@ -147,11 +139,13 @@ Esta gramática es capaz de reconocer entradas de la forma:
 1 * 2
 1 + ( 2 * 3)
 ```
+### Selección de mejores proyectos
+En la calificación de cada fase, los dos mejores proyectos serán seleccionados para ser agregados al repositorio de la escuela de ciencias y sistemas. Para la siguiente fase, todos los grupos deberán tomar como base uno de los proyectos ganadores de la fase anterior, y hacer un fork para desarrollar la siguiente fase. Esto se repetirá para cada fase, hasta completar el proyecto.
 
 ## Requerimientos
 
 Para tener derecho a calificarse, deberá cumplir con los siguientes requerimientos:
-
+- El proyecto debe utlizar la [licencia MIT](https://opensource.org/license/mit)
 - Agregar al auxiliar al repositorio. Usuario [SaulCastel](github.com/SaulCastel)
 - El sitio web debe ser publicado en github pages, utilizando github actions. **No se calificará el sitio web en su entorno local**. El uso de github actions es **obligatorio**
 - En caso de usar Typescript, el código fuente subido al repositorio serán los archivos .ts
