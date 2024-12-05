@@ -27,7 +27,9 @@ Cada regla tiene la siguiente estructura:
 *identificador* = *expresión*
 ```
 
+### Notas de sintaxis
 - Las reglas pueden ser separadas por ; (Esto es opcional)
+- Los identificadores están definidos por la expresión regular: [_a-z][_a-z0-9]*
 
 #### Expresiones reconocidas
 
