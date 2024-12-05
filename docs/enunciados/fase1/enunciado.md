@@ -120,11 +120,11 @@ start
   = additive
 
 additive
-  = left "+" right
+  = multiplicative "+" additive
   / multiplicative
 
 multiplicative
-  = left "*" right
+  = primary "*" multiplicative
   / primary
 
 primary
