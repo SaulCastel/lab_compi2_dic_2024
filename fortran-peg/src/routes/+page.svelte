@@ -15,7 +15,7 @@
         <CodeMirror bind:value={editorText} on:change={parse}/>
     </div>
     <div class="rounded-md border-black border-2 h-full w-1/2 mx-2">
-        <p>
+        <p class="text-red-500">
             {result}
         </p>
     </div>
