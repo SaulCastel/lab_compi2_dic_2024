@@ -6,7 +6,7 @@
     let result = $state("");
     
     function parse() {
-        result = parseInput(editorText);
+        result = parseInput(editorText.trim());
     }
 </script>
 
