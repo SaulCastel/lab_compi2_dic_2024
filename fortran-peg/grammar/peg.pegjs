@@ -1,38 +1,37 @@
 grammar
-  = rule (_ rule)*
+  = rule (nl rule)*
 
 rule
-  = name _ "=" _ choice _ ";"
-
+  = name nl "=" _ choice nl ";"
+  
 choice
-  = contatenation (_ "/" _ contatenation)+
-  / contatenation
+  = concatenation (nl "/" nl concatenation)*
 
-contatenation
-  = expression (_ expression)+
-  / expression
+concatenation
+  = expression (_ expression)*
 
 expression
-  = set
-  / name
+  = parsingExpression [?+*]?
 
-set
-  = "[" characters+ "]"
+parsingExpression
+  = name
+  / string
+  / range
 
-characters
-  = validChar / range / escapeCodes
+string
+	= ["] [^"]* ["]
+    / ['] [^']* [']
+    
+range = "[" input_range+ "]"
 
-escapeCodes
-  = [\][tnr]
+input_range = [^[\]-] "-" [^[\]-]
+			/ [^[\]]+
 
-range
-  = bottom:validChar "-" top:validChar &{return bottom < top}
+name "identificador"
+  = [_a-z]i[_a-z0-9]i*
 
-validChar
-  = [a-z0-9]i
+_ "espacios en blanco"
+  = [ \t]*
 
-name
-  = [_a-z][_a-z0-9]i*
-
-_ "whitespace"
+nl "nueva linea"
   = [ \t\n\r]*
