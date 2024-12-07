@@ -24,12 +24,15 @@ Cada gramática es una serie de reglas, donde cada regla consta de un nombre y u
 
 Cada regla tiene la siguiente estructura:
 ```markdown
-*identificador* = *expresión*
+*identificador* = *expresión* ;
 ```
 
-### Notas de sintaxis
-- Las reglas pueden ser separadas por ; (Esto es opcional)
+#### Notas de sintaxis
 - Los identificadores están definidos por la expresión regular: [_a-z][_a-z0-9]*
+- Las gramáticas son case insensitive
+
+>[!IMPORTANT]
+>Las reglas son separadas por ;
 
 #### Expresiones reconocidas
 
@@ -118,21 +121,26 @@ Cadena(s) reconocidas: foo, bar, baz
 ```
 start
   = additive
+  ;
 
 additive
   = multiplicative "+" additive
   / multiplicative
+  ;
 
 multiplicative
   = primary "*" multiplicative
   / primary
+  ;
 
 primary
   = integer
   / "(" additive ")"
+  ;
 
 integer
   = [0-9]+
+  ;
 ```
 
 Esta gramática es capaz de reconocer entradas de la forma:
