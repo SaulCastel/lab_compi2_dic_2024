@@ -1,0 +1,12 @@
+subexpresion
+  = "hola, " ("que tal?" / "como estas?" / 'y adios.');
+
+conjuntos
+  = [abc]
+  / [a-z0-9]
+  / [abc0-9ghiA-Z]
+  ;
+
+unarias
+  = (regla? regla2)+
+  / regla3* / (regla4?)*;
