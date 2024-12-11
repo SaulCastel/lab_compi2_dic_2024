@@ -28,7 +28,10 @@ Cada regla tiene la siguiente estructura:
 ```
 
 #### Notas de sintaxis
-- Los identificadores están definidos por la expresión regular: [_a-z][_a-z0-9]*
+>[!WARNING]
+>FortranPEG debe reconocer las mismas gramátiacs que PeggyJS
+
+- Los identificadores están definidos por la expresión regular: [_a-zA-Z][_a-zA-Z0-9]*
 - Las gramáticas son case sensitive
 - Se pueden hacer comentarios con //(una linea) y /\*(multilinea)\*/
 >[!IMPORTANT]
@@ -42,7 +45,7 @@ Cada regla tiene la siguiente estructura:
 "literal" \
 "literal"i \
 'literal' \
-'literal'i \
+'literal'i
 
 Una cadena de texto que será tomada literalmente.
 >[!NOTE]
@@ -179,8 +182,8 @@ Opcionalmente, se puede especificar la expresión "delimitador". El "delimitador
 - enteros positivos:
 > start = "a"|2|;
 - nombre de una etiqueta precedente:
-> start = count:n1 «a»|count|;
-> n1 = n:$[0-9] { return parseInt(n); };
+> start = count:n1 "a"|count|;
+> n1 = n:$[0-9];
 
 ```
 Ejemplo: repeticion = "a"|2..3, ","|
@@ -209,14 +212,14 @@ Ejemplo: texto = $"foo"
 
 etiqueta : *expresion*
 
-Asigna una etiqueta a una expresión. La etiqueta debe ser un identificador válido.
+Asigna una etiqueta a una expresión. La etiqueta debe ser un identificador válido. La etiqueta va antes de $ en caso de usar ambas (label:$foo).
 ```
 Ejemplo: regla = bar:"foo"
 ```
 
 @ ( label :)? *expresion*
 
-Operador "pluck". Puede ir acompañador de una etiqueta
+Operador "pluck". Puede ir acompañado de una etiqueta
 
 ```
 Ejemplo: pluck = @"foo"
@@ -277,4 +280,4 @@ Para tener derecho a calificarse, deberá cumplir con los siguientes requerimien
 - Sitio web funcional, publicado en github pages a través de github actions
 - Deberá entregar el link a su repositorio a través UEDI
 
-**Fecha y hora límite de entrega: Domingo 12 de Diciembre a las 18:30 horas**
+**Fecha y hora límite de entrega: Jueves 12 de Diciembre a las 18:30 horas**
