@@ -11,13 +11,13 @@ concatenation
   = pluck (_ pluck)*
 
 pluck
-  = "@"? label
+  = "@"? _ label
 
 label
-  = (identifier ":")? expression
+  = (identifier _ ":")? _ expression
 
 expression
-  = "$"? parsingExpression quantifier?
+  = "$"? _ parsingExpression _ quantifier?
 
 quantifier
   = [?+*]
