@@ -1,14 +1,14 @@
 grammar
-  = rule+ nl
+  = rule+ _
 
 rule
-  = nl identifier nl string? nl "=" _ choice nl (_";"_)?
+  = _ identifier _ string? _ "=" _ choice (_ ";")?
   
 choice
-  = concatenation (nl "/" nl concatenation)*
+  = concatenation (_ "/" _ concatenation)*
 
 concatenation
-  = pluck (_ pluck)*
+  = pluck (_ pluck !"=")*
 
 pluck
   = "@"? _ label
@@ -47,10 +47,7 @@ input_range = [^[\]-] "-" [^[\]-]
 identifier "identificador"
   = [_a-z]i[_a-z0-9]i*
 
-_ "espacios en blanco"
-  = [ \t]*
-
-nl "nueva linea"
+_ "Espacios en blanco"
   = [ \t\n\r]*
 
 number
