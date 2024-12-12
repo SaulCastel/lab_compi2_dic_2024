@@ -1,12 +1,19 @@
-subexpresion
-  = "hola, " ("que tal?" / "como estas?" / 'y adios.');
+// Comentario de una linea
+
+subexpresion "Saludos"
+  = "hola, " ("que tal?"i / @etiqueta : "como estas?" / label:'y adios.')
+
+// otro comentario
 
 conjuntos
-  = [abc]
-  / [a-z0-9]
-  / [abc0-9ghiA-Z]
-  ;
+  = $[abc]
+  / @[a-z0-9]i
+  / label:[abc0-9ghiA-Z]|label..20|
+
+/* Comentario
+Multi
+Linea */
 
 unarias
-  = (regla? regla2)+
-  / regla3* / (regla4?)*;
+  = (regla ? regla2)+
+  / regla3* / (regla4 + regla5)*
