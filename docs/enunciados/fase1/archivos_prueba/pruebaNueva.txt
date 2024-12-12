@@ -1,0 +1,23 @@
+regla1 "nombre de regla"
+  = "foo"i "bar" etiqueta:"baz"
+  / "que tal"|1..|
+  ;
+
+regla2
+  = $("1" / "2" / "3")|.., ";"|
+  / (_ @[abc]i _)|..3, _ separador _|
+  / conteo:int "cadena"|conteo|
+  / conteo:int "cadena2"|0..conteo|
+  / conteo:int "cadena3"|conteo, _ ("|" / ";") _|
+
+_ "Espacios en blanco"
+  = [ \t\r\n]*;
+
+int "Numero"
+  = [0-9]+
+
+reglaW = & reglaX; reglaY = ! reglaZ
+
+reglaPepito
+  = . . !.
+  ;
