@@ -8,7 +8,7 @@ choice
   = concatenation (_ "/" _ concatenation)*
 
 concatenation
-  = pluck (_ pluck !"=")*
+  = pluck (_ pluck !(_ string? _ "="))*
 
 pluck
   = "@"? _ label
