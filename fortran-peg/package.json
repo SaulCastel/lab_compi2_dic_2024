@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-    "compile": "peggy --format es -o src/lib/parser/peg-parser.js grammar/peg.pegjs"
+    "compile": "peggy --ast grammar/peg.pegjs",
+    "bootstrap": "node tools/Generator.js"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "^3.0.0",
