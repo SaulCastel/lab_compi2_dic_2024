@@ -41,11 +41,42 @@ Para cada expresión que puede representar un token:
 - Para reglas que tienen más de una expresión reconocida como token, dejar que cada expresión sea el nombre del token correspondiente
 
 #### Retorno de la función nextsym()
-La función nextsym() debe retornar el siguiente token en la entrada.
-La función retorna el nombre del token.
+La función nextsym() retorna el **lexema** correspondiente al token encontrado.
+
+#### Ejemplo de modulo fortran generado
+```fortran
+module parser
+	implicit none
+	...
+
+contains
+...
+
+function nextsym(input) result(token)
+	character(len=*), intent(inout) :: input
+	character(len=100), intent(out) :: token
+	...
+	// código generado para reconocer [0..9]+
+	do while (i <= len(trim(input)))         
+if (iachar(input_string(i:i)) >= iachar('0') .and. iachar(input_string(i:i)) <= 	iachar('9')) then             
+is_digit = .true.             
+token = trim(adjustl(token)) // input_string(i:i)
+else if (is_digit) then
+input = trim(adjustl(input(i:)))
+has_token = .true.
+return
+end if
+i = i + 1
+end do
+...
+end function nextsym
+...
+
+end module parser
+```
 
 ### Generación y descarga de módulo fortran
-La pagina web debe generar un módulo fortran y dar la opción de descargar el modulo a la computadora.
+La pagina web debe generar un módulo fortran y mostrar un botón para descargar el modulo a la computadora.
 
 ## Archivos de entrada
 En la calificación habrá dos tipos de archivo de entrada.
@@ -91,9 +122,9 @@ La función nextsym() debe devolver los tokens en el siguiente orden:
 |+          |+          |
 |integer    |4          |
 |)          |)          |
-|EOI        |EOI        |
+|EOF        |EOF        |
 
-donde EOI es el token de fin de entrada
+donde EOF es el token de fin de entrada
 
 ## Requirimientos
 - Trabajar sobre el proyecto existente en el repositorio de la ECYS, haciendo fork de este
