@@ -11,7 +11,7 @@ Para trabajar la segunda fase, debe dirigirse al [repositorio del proyecto](http
 
 ### Reconocimiento de expresiones
 Recibiendo una gramática PEG válida, deberá reconocer todas aquellas expresiones que representan tokens. Estas expresiones deben ser convertidas en parte de la función nextsym().
->![IMPORTANT]
+>[!IMPORTANT]
 >El tokenizador debe implementar todas las expresiones que reconoce Peggy
 
 #### Literales
