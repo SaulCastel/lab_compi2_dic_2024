@@ -115,18 +115,23 @@ La función nextsym() debe devolver los tokens en el siguiente orden:
 
 |tipo       |lexema     |
 |-----------|-----------|
-|integer    |2          |
-|\*         |\*         |
-|(          |(          |
-|integer    |3          |
-|+          |+          |
-|integer    |4          |
-|)          |)          |
-|EOF        |EOF        |
+|integer    |"2"        |
+|whitespace |" "        |
+|\*         |"\*"       |
+|whitespace |" "        |
+|(          |"("        |
+|integer    |"3"        |
+|whitespace |" "        |
+|+          |"+"        |
+|whitespace |" "        |
+|integer    |"4"        |
+|)          |")"        |
+|EOF        |"EOF"      |
 
 donde EOF es el token de fin de entrada
 
 ## Requirimientos
+- Nombrar el el fork de la siguiente manera: G##_Fase2_FortranPEG, Ej. G03_Fase2_FortranPEG
 - Trabajar sobre el proyecto existente en el repositorio de la ECYS, haciendo fork de este
 - Todos los integrantes deben trabajar. Se revisaran commits en la calificación
 - El modulo tiene que poder descargarse. No se permite mostrar el codigo fuente generado en la página web
