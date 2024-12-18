@@ -6,7 +6,7 @@
     let result = $state("");
     
     function parse() {
-        result = parseInput(editorText.trim());
+        result = parseInput(editorText);
     }
 </script>
 
@@ -15,8 +15,8 @@
         <CodeMirror bind:value={editorText} on:change={parse}/>
     </div>
     <div class="rounded-md border-black border-2 h-full w-1/2 mx-2">
-        <p class="text-red-500">
+        <pre class="text-red-500">
             {result}
-        </p>
+        </pre>
     </div>
 </div>

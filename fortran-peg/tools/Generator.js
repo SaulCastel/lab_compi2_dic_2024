@@ -24,6 +24,18 @@ codeString += `}`;
 writeFileSync(path.join(__dirname, visitorDestination), codeString);
 console.log('Generated visitor Interface');
 
+function printArgs(args, separator) {
+    const argKeys = Object.keys(args);
+    return argKeys
+        .map((arg) => {
+            const parts = args[arg].split('?');
+            return parts.length > 1
+                ? `${arg}?: ${parts[1]}`
+                : `${arg}: ${parts[0]}`;
+        })
+        .join(separator);
+}
+
 codeString = `
 // Auto-generated
 import type Node from './Interfaces/Node';
@@ -33,9 +45,9 @@ for (const [name, args] of Object.entries(nodes)) {
     const argKeys = Object.keys(args);
     codeString += `
 export class ${name} implements Node {
-    ${argKeys.map((arg) => `${arg}: ${args[arg]};`).join('\n\t')}
+    ${printArgs(args, '\n\t')}
 
-    constructor(${argKeys.map((arg) => `${arg}: ${args[arg]}`).join(', ')}) {
+    constructor(${printArgs(args, ', ')}) {
         ${argKeys.map((arg) => `this.${arg} = ${arg};`).join('\n\t\t')}
     }
 
