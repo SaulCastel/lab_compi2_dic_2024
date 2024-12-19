@@ -7,7 +7,12 @@ module tokenizer
         integer, intent(inout) :: cursor
         character(len=:), allocatable :: lexeme
 
-        if ("foo" == input(cursor:cursor + 2)) then !Foo
+        if (cursor > len(input)) then
+            allocate( character(len=3) :: lexeme )
+            lexeme = "EOF"
+            return
+        end if
+        if ("foo" == input(cursor:cursor + 2)) then
             allocate( character(len=3) :: lexeme)
             lexeme = input(cursor:cursor + 2)
             cursor = cursor + 3
@@ -20,5 +25,6 @@ module tokenizer
             return
         end if
         print *, "error lexico en col ", cursor, ', "'//input(cursor:cursor)//'"'
+        lexeme = "ERROR"
     end function nextSym
 end module tokenizer
