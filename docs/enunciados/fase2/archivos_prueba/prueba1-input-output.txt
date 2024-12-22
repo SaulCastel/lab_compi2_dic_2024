@@ -1,0 +1,3 @@
+atacar: a05     -> atacar, :, " ", a, 05, EOF
+atacar J10      -> atacar, " ", J, 10, EOF
+atacar= a4      -> atacar, ERROR(=)
