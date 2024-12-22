@@ -1,5 +1,13 @@
-parser: parser.f90 tokenizer.f90
+.PHONY: clean
+
+parser: parser.o tokenizer.o
 	gfortran -o $@ $^
 
-tokenizer.o: tokenizer.f90
+parser.o: parser.f90 tokenizer.o tokenizer.mod 
 	gfortran -c $<
+
+tokenizer.o tokenizer.mod: tokenizer.f90
+	gfortran -c $<
+
+clean:
+	rm *.o *.mod
