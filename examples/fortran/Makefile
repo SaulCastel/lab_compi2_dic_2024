@@ -1,12 +1,12 @@
 .PHONY: clean
 
-parser: parser.o tokenizer.o
+test: test.o parser.o
 	gfortran -o $@ $^
 
-parser.o: parser.f90 tokenizer.o tokenizer.mod 
+test.o: test.f90 parser.o parser.mod 
 	gfortran -c $<
 
-tokenizer.o tokenizer.mod: tokenizer.f90
+parser.o parser.mod: parser.f90
 	gfortran -c $<
 
 clean:

@@ -1,3 +1,5 @@
-*.mod
-*.o
-parser
+*
+!*.f90
+!Makefile
+!README.md
+!*.txt

@@ -1,31 +1,72 @@
-program parser
-    use tokenizer
+module parser
     implicit none
+    integer, private :: cursor
+    character(len=:), allocatable, private :: input
 
-    character(len=:), allocatable :: lexeme, input
-    character(len=100) :: filename
-    integer :: cursor, size
-    logical :: exists
+    contains
 
-    if (command_argument_count() == 0) then
-	print *, "error: no input file"
-	stop
-    end if
+    subroutine parse(str)
+        character(len=:), allocatable, intent(in) :: str
 
-    call get_command_argument(1, filename)
+        input = str
+        cursor = 1
+        if (sum()) then
+            print *, "Parsed input succesfully!"
+        end if
+    end subroutine parse
 
-    inquire(file=filename, exist=exists, size=size)
-    if (.not. exists) then
-	print *, "error: file not found"
-	stop
-    end if
-    allocate (character(len=size) :: input)
-    open (1, file=filename, status='old', action='read', access='stream', form='unformatted')
-    read (1) input
+    subroutine error(expected)
+        character(len=*), intent(in) :: expected
 
-    cursor = 1
-    do while (lexeme /= "EOF" .and. lexeme /= "ERROR")
-        lexeme = nextSym(input, cursor)
-        print *, lexeme
-    end do
-end program parser
+        print *, "Error: Expected "//expected//", but found "//input(cursor:cursor)
+        call exit(1)
+    end subroutine error
+
+    function sum() result(accept)
+        logical :: accept
+
+        accept = .false.
+        if (.not. num()) then
+            call error("[0-9]")
+        end if
+        do while (.not. cursor > len(input))
+            if (.not. num()) then
+                exit
+            end if
+        end do
+
+        if ('+' /= input(cursor:cursor + 0)) then
+            call error("+")
+        end if
+        cursor = cursor + 1;
+
+        if (.not. num()) then
+            call error("[0-9]")
+        end if
+        do while (.not. cursor > len(input))
+            if (.not. num()) then
+                exit
+            end if
+        end do
+
+        call EOF()
+
+        accept = .true.
+    end function sum
+
+    function num() result(accept)
+        logical :: accept
+
+        accept = .false.
+        if(input(cursor:cursor) >= '0' .and. input(cursor:cursor) <= '9' ) then
+            cursor = cursor + 1
+            accept = .true.
+        end if
+    end function num
+
+    subroutine EOF()
+        if(.not. cursor > len(input)) then
+            call error("EOF")
+        end if
+    end subroutine EOF
+end module parser
